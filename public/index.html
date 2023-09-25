@@ -12,6 +12,9 @@
 </head>
 <body>
     <!-- Include the Navbar -->
+    <form action="/" method="post" enctype="multipart/form-data">
+
+        
     <div id="navbar-container"></div>
     <div class="main-container">
         <div class="container mt-5">
@@ -20,7 +23,7 @@
                     <h2 class="text-center mb-4 img-heading" > Image  <span style="color: gray;">Upload</span></h2>
                     <div class="custom-file mb-3">
                         <label class="custom-file-label" for="file-input" id="file-label">Choose Image</label>
-                        <input type="file" class="custom-file-input" id="file-input" accept="image/*">
+                        <input type="file" class="custom-file-input" name="image" id="file-input" accept="image/*">
                     </div>                    
                 </div>
             </div>
@@ -31,9 +34,14 @@
             </div>
         </div>
     </div>
-    <div class="generate-button-container text-center mt-4">
-        <button id="generate-button" class="btn btn-primary btn-lg" disabled>Generate</button>
-    </div>
+    
+        <div class="generate-button-container text-center mt-4">
+            <button id="generate-button" class="btn btn-primary btn-lg" disabled>Generate</button>
+        </div>
+
+
+    </form>
+    
     <div class="container latex-container">
         <h4 class="text-center mb-4 latex-heading" > How To  <span style="color: gray;">Use:</span></h4>
         <div id="latex-preview" class="text-center">
@@ -63,7 +71,15 @@
 
                 // Read the uploaded file and display it in the image preview
                 reader.onload = function (e) {
-                    imagePreview.innerHTML = `<img src="${e.target.result}" class="img-thumbnail" alt="Uploaded Image">`;
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.classList.add('img-thumbnail');
+                    img.alt = 'Uploaded Image';
+
+                    img.style.maxHeight = '300px';
+
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
                 };
                 reader.readAsDataURL(file);
                 generateButton.removeAttribute('disabled');
