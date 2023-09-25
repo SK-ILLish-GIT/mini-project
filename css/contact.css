@@ -1,0 +1,12 @@
+.gray-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.contact-heading{
+    color: #007bff; 
+    font-size: 40px; 
+    font-weight: bold; 
+    text-transform: uppercase;
+}

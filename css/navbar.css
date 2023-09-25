@@ -1,0 +1,18 @@
+.cool-navbar {
+    background: linear-gradient(to bottom, #007BFF, #0056b3);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cool-navbar .navbar-brand,
+.cool-navbar .navbar-nav .nav-link {
+    color: #fff;
+    font-weight: 600;
+}
+
+.cool-navbar .navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
+
+.navbar-toggler-icon {
+    color: #fff;
+}
