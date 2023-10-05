@@ -1,6 +1,7 @@
 const express=require("express")
 const bodyParser=require("body-parser");
 const multer=require("multer");
+const Jimp = require('jimp');
 
 
 
@@ -17,18 +18,31 @@ app.get("/",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
     
 })
-app.post("/",upload.single('image'),(req,res)=>{
+
+app.post("/", upload.single('image'), async (req, res) => {
     if (!req.file) {
         res.status(400).send("No image uploaded");
         return;
     }
 
-    const imageBuffer = req.file.buffer;
-    // You can process the image buffer here as needed
+    try {
+        const imageBuffer = req.file.buffer;
+        const image = await Jimp.read(imageBuffer);
 
-    // Respond with a message indicating successful processing
-    res.send("Image received and processed successfully\n"+imageBuffer);
-})
+        // Convert the image to BMP
+        const bmpBuffer = await image.getBufferAsync(Jimp.MIME_BMP);
+
+        // Send the BMP image as a response
+        res.set({
+            'Content-Type': 'image/bmp',
+            'Content-Disposition': 'attachment; filename=image.bmp'
+        });
+        res.send(bmpBuffer);
+    } catch (error) {
+        console.error("Error processing the image:", error);
+        res.status(500).send("Error processing the image");
+    }
+});
 app.listen(port,()=>{
     console.log("server started on "+port);
 })
