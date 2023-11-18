@@ -57,10 +57,17 @@
     </form>
 
     <div class="container latex-container">
-        <h4 class="text-center mb-4 latex-heading"> How To <span style="color: gray;">Use:</span></h4>
+        
         <div id="latex-preview" class="text-center">
-            <p class="step"><span style="color: #007bff;">STEP 1:</span> Upload your Image</p>
-            <p class="step"><span style="color: #007bff;">STEP 2:</span>Generate LaTeX Equation</p>
+            <%if(prediction!=null){%>
+                <h4 class="text-center mb-4 latex-heading"> Latex <span style="color: gray;">of Image :</span></h4>
+                <p class="step"><%=prediction%></p>
+
+            <% } else { %>
+                <h4 class="text-center mb-4 latex-heading"> How To <span style="color: gray;">Use :</span></h4>
+                <p class="step"><span style="color: #007bff;">STEP 1:</span> Upload your Image</p>
+                <p class="step"><span style="color: #007bff;">STEP 2:</span>Generate LaTeX Equation</p>
+            <% } %>
         </div>
     </div>
 

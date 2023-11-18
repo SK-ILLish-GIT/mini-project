@@ -19,7 +19,7 @@ def predict_expression(img_tensor):
     # Assuming for_test is defined and imported correctly
     # attention, prediction = for_test(img_tensor)
     
-    prediction_string = 'Surprise MMMMMother fucker'
+    prediction_string = 'pani pani pani pani....umcle ji..'
     # img_array = np.array(img_tensor.squeeze(0).squeeze(0))
     
     # for i in range(attention.shape[0]):
