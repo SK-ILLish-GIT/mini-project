@@ -6,6 +6,7 @@ const previewButton = document.getElementById("preview-button");
 const croppedImgContainer = document.getElementById("cropped-img");
 const notSelected  = document.getElementById("not-selected");
 let cropper = "";
+let finalImage="";
 
 // Add an event listener to the file input
 fileInput.addEventListener("change", function () {
@@ -24,6 +25,7 @@ fileInput.addEventListener("change", function () {
 
       imagePreview.innerHTML = "";
       imagePreview.appendChild(img);
+      finalImage=img;
 
       //Initialize cropper
       cropper = new Cropper(img);
@@ -65,6 +67,7 @@ previewButton.addEventListener("click", function (e) {
     // Append the cropped image to the container
     croppedImgContainer.innerHTML = "";
     croppedImgContainer.appendChild(croppedImg);
+    finalImage=croppedImg;
   }
   // else{
   //   if(croppedImgContainer.hasChildNodes()){
@@ -73,6 +76,30 @@ previewButton.addEventListener("click", function (e) {
   // }
 });
 
-// generateButton.addEventListener("click", function (e) {
-//   //send post request to the server
+// generateButton.addEventListener("click", function (event) {
+//   // Prevent the default form submission
+//   event.preventDefault();
+
+//   // Your image processing logic here...
+//   console.log("here..")
+//   // Convert the image data to a Blob
+//   const blob = new Blob([finalImage], { type: 'image/bmp' });
+
+//   // Create a FormData object and append the image file
+//   const formData = new FormData();
+//   formData.append('input_image', blob, 'input_image.bmp');
+
+//   // Send a POST request using fetch
+//   fetch('/', {
+//       method: 'POST',
+//       body: formData,
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//       // Handle the response data as needed
+//       console.log('Response:', data);
+//   })
+//   .catch(error => {
+//       console.error('Error:', error);
+//   });
 // });

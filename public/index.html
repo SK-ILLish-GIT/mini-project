@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI PROJECT</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Cropper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+</head>
+
+<body>
+    <!-- Include the Navbar -->
+    <form action="/" method="post" enctype="multipart/form-data">
+
+
+        <div id="navbar-container"></div>
+        <div class="main-container">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h2 class="text-center mb-4 img-heading"> Image <span style="color: gray;">Upload</span></h2>
+                        <div class="custom-file mb-3">
+                            <label class="custom-file-label" for="file-input" id="file-label">Choose Image</label>
+                            <input type="file" class="custom-file-input" name="input_image" id="file-input" accept="image/*">
+                        </div>
+                        <div id="not-selected" class="text-center pd-2">
+                            🗾 No image selected
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-container">
+                <div class="img-preview-container">
+                    <div id="image-preview" class="text-center mt-3">
+                    </div>
+                </div>
+                <div class="cropped-img-container">
+                    <div id="cropped-img" class="text-center mt-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <div class="generate-button-container text-center mt-4 ml-2">
+                <button id="preview-button" class="btn btn-primary btn-lg" disabled>Preview</button>
+            </div>
+            <div class="generate-button-container text-center mt-4 mr-2">
+                <button id="generate-button" type="submit" class="btn btn-primary btn-lg" disabled>Generate</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="container latex-container">
+        <h4 class="text-center mb-4 latex-heading"> How To <span style="color: gray;">Use:</span></h4>
+        <div id="latex-preview" class="text-center">
+            <p class="step"><span style="color: #007bff;">STEP 1:</span> Upload your Image</p>
+            <p class="step"><span style="color: #007bff;">STEP 2:</span>Generate LaTeX Equation</p>
+        </div>
+    </div>
+
+
+    <!-- Include Bootstrap JS (jQuery and Popper.js are included with Bootstrap) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Cropper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <!-- Link to your custom JavaScript file -->
+    <script src="script.js"></script>
+    <script src="index-script.js"></script>
+</body>
+
+</html>
