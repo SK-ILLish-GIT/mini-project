@@ -47,11 +47,26 @@ body {
     transition: background-color 0.3s ease;
 }
 
-
-.img-preview-container {
+.img-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* align-content: center; */
+    justify-content: center;
+}
+.img-preview-container{
     max-width: 400px; /* Set your desired maximum width */
     margin: 0 auto;   /* Center the container horizontally */
+    margin-left: 18%;
     text-align: center; /* Center the content (the image or "No image selected" message) */
+    
+}
+.cropped-img-container{
+    max-width: 400px;
+    margin: 0 auto;
+    margin-right: 18%;
+    text-align: center;
 }
 
 #image-preview img {
@@ -67,8 +82,19 @@ body {
     display: flex;
     flex-direction: column;
 }
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+.aspect-ratio-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 5px;
+}
 .generate-button-container {
     margin-bottom: 20px;
+    flex: 1;
 }
 .latex-container {
     background-color: #f0f0f0; /* Light gray background color */
