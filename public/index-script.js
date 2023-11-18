@@ -73,6 +73,6 @@ previewButton.addEventListener("click", function (e) {
   // }
 });
 
-generateButton.addEventListener("click", function (e) {
-  //send post request to the server
-});
+// generateButton.addEventListener("click", function (e) {
+//   //send post request to the server
+// });
