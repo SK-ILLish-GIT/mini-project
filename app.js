@@ -7,6 +7,7 @@ const http = require('http');
 const fs = require('fs');
 const ejs = require('ejs');
 const FormData = require('form-data');
+const https=require('https');
 
 
 
@@ -65,14 +66,14 @@ app.post("/predict", upload.single('input_image'), async (req, res) => {
 
         // Make a POST request to the Flask API using http.request
         const options = {
-            hostname: '127.0.0.1',
-            port: 5069,
+            hostname: 'pysem5projectapi.onrender.com',
+            port: 443,  // Assuming you are using the default HTTPS port
             path: '/',
             method: 'POST',
             headers: formData.getHeaders(),
         };
 
-        const apiReq = http.request(options, (apiRes) => {
+        const apiReq = https.request(options, (apiRes) => {
             let data = '';
 
             apiRes.on('data', (chunk) => {
@@ -81,17 +82,19 @@ app.post("/predict", upload.single('input_image'), async (req, res) => {
 
             apiRes.on('end', () => {
                 const prediction = JSON.parse(data);
-                console.log('Body:', prediction);
+                // console.log('Body:', prediction);
                 res.status(200).render('index', { prediction: prediction.prediction });
             });
         });
 
-        apiReq.on("error", (err) => {
-            console.log("Error: ", err);
+        apiReq.on('error', (err) => {
+            console.log('Error: ', err);
+res.status(500).send('Internal Server Error');
         });
 
         // Send the FormData as the request body
-        apiReq.write(formData.getBuffer());
+        const buffer = await formData.getBuffer();  // Add await here
+        apiReq.write(buffer);
 
         // End the request
         apiReq.end();
