@@ -43,7 +43,7 @@ function signIn(){
     form.setAttribute('action', oauth2Endpoint);
     let params = {
         'client_id': '895922906167-i2pe2g5s8m57oi8gjgolahpuqc63aus7.apps.googleusercontent.com',
-        'redirect_uri': 'http://127.0.0.1:3000/profile.html',
+        'redirect_uri': 'https://mini-project-0vul.onrender.com/profile.html',
         'response_type': 'token',
         'scope': 'openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
         'include_granted_scopes': 'true',
