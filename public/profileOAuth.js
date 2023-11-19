@@ -57,7 +57,7 @@ function logOut() {
       localStorage.clear();
       localStorage.setItem("authInfo", null);
       // redirect to index.html
-      window.location.href = "http://127.0.0.1:3000/";
+      window.location.href = "https://mini-project-0vul.onrender.com/";
     })
     .catch((error) => {
       console.error("Error:", error);
