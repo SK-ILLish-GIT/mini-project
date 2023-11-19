@@ -6,6 +6,7 @@ const path = require('path');
 const http = require('http');
 const fs = require('fs');
 const ejs = require('ejs');
+const FormData = require('form-data');
 
 
 
@@ -46,20 +47,21 @@ app.get("/contact",(req,res)=>{
 })
 
 
-app.post("/", upload.single('input_image'), async (req, res) => {
+app.post("/predict", upload.single('input_image'), async (req, res) => {
     if (!req.file) {
         res.status(400).send("No image uploaded");
         return;
     }
 
     try {
-            // Use the 'path' module to join the current directory with the 'uploads' folder
-            const imagePath = path.join(__dirname, 'uploads', 'input_image.bmp');
-            console.log(imagePath)
-
+        const imagePath = path.join(__dirname, 'uploads', req.file.filename);
 
         // Read the image file as binary data
         const imageData = fs.readFileSync(imagePath);
+
+        // Create a new FormData instance and append the image data
+        const formData = new FormData();
+        formData.append('image', imageData, { filename: 'input_image.bmp' });
 
         // Make a POST request to the Flask API using http.request
         const options = {
@@ -67,9 +69,7 @@ app.post("/", upload.single('input_image'), async (req, res) => {
             port: 5069,
             path: '/',
             method: 'POST',
-            headers: {
-                'Content-Type': 'image/bmp', // Set the appropriate content type for your image
-            },
+            headers: formData.getHeaders(),
         };
 
         const apiReq = http.request(options, (apiRes) => {
@@ -82,11 +82,7 @@ app.post("/", upload.single('input_image'), async (req, res) => {
             apiRes.on('end', () => {
                 const prediction = JSON.parse(data);
                 console.log('Body:', prediction);
-
-                // Send the response to the client here
-                // res.status(200).send("<h1>"+prediction.prediction+"</h1>");
-                console.log(prediction.prediction);
-                res.status(200).render('index',{prediction:prediction.prediction});
+                res.status(200).render('index', { prediction: prediction.prediction });
             });
         });
 
@@ -94,8 +90,8 @@ app.post("/", upload.single('input_image'), async (req, res) => {
             console.log("Error: ", err);
         });
 
-        // Send image data in the request body
-        apiReq.write(imageData);
+        // Send the FormData as the request body
+        apiReq.write(formData.getBuffer());
 
         // End the request
         apiReq.end();

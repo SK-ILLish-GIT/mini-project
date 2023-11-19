@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from PIL import Image
 import numpy as np
 import torch
+import io
 #from for_test_V20 import for_test
 
 app = Flask(__name__)
@@ -45,23 +46,29 @@ def predict_expression(img_tensor):
 
 @app.route('/', methods=['POST'])
 def predict():
-    # print("inside predict")
     try:
+        # Check if the 'image' file is present in the request
+        if 'image' not in request.files:
+            return jsonify({'error': 'No image uploaded'})
+
         # Get the image file from the POST request
-        # print(request.files)
-        print("api - api")
-        # img_file = request.files['image']
-        # img = Image.open(img_file)
-        
-        # # Preprocess the image
-        # img_tensor = preprocess_image(img)
-        
-        # Make prediction
-        # prediction_string = predict_expression(img_tensor)
-        prediction_string = predict_expression(' ')
-        
-        # return jsonify({'prediction': prediction_string, 'message': 'Prediction saved to output.txt'})
+        img_file = request.files['image']
+
+        # Read the image file as binary data
+        image_data = img_file.read()
+
+        # Open the image using PIL
+        img = Image.open(io.BytesIO(image_data))
+
+        # Preprocess the image (Replace preprocess_image with your actual preprocessing logic)
+        img_tensor = preprocess_image(img)
+        print(img_tensor)
+
+        # Make prediction (Replace predict_expression with your actual prediction logic)
+        prediction_string = predict_expression(img_tensor)
+
         return jsonify({'prediction': prediction_string})
+
     except Exception as e:
         return jsonify({'error': str(e)})
         
