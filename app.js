@@ -42,7 +42,7 @@ app.get("/about",(req,res)=>{
     
 })
 app.get("/contact",(req,res)=>{
-    res.sendFile(__dirname + "/public/contact.html");
+    res.render("contact");
     
 })
 

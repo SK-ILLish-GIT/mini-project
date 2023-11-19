@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/contact.css">
+</head>
+
+<body>
+    <!-- Navbar (you can use the previously created navbar) -->
+    <div id="navbar-container"></div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center mb-4 contact-heading"> Contact <span style="color: gray;">Us</span></h2>
+                <!-- Contact Form -->
+                <div class="gray-container">
+                    <form action="https://formspree.io/f/xvonjpno" method="POST">
+                        <input type="text" name="subject" class="form-control" value="Mini Project Sem5" hidden>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" id="name"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" id="email"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" name="message" placeholder="Your Message" id="message"
+                                rows="4" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (jQuery and Popper.js are included with Bootstrap) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>ð
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const loadNameMail = () => {
+            const userName = localStorage.getItem("userName");
+            const userMail = localStorage.getItem("userEmail");
+            console.log(userName);
+            console.log(userMail);
+            if (userName && userMail) {
+                document.getElementById("name").value = userName;
+                document.getElementById("email").value = userMail;
+                document.getElementById("name").setAttribute("disabled", true);
+                document.getElementById("email").setAttribute("disabled", true);
+            }
+        };
+
+        window.onload = function () {
+            loadNameMail();
+        };
+    </script>
+</body>
+
+</html>
