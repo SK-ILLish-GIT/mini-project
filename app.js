@@ -64,7 +64,7 @@ app.post("/", upload.single('input_image'), async (req, res) => {
         // Make a POST request to the Flask API using http.request
         const options = {
             hostname: '127.0.0.1',
-            port: 5000,
+            port: 5069,
             path: '/',
             method: 'POST',
             headers: {
