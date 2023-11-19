@@ -16,3 +16,12 @@
 .navbar-toggler-icon {
     color: #fff;
 }
+#signUp {
+    background-color: transparent; /* Google Blue */
+    color: #fff; /* White text color */
+    padding: 12px 20px; /* Adjust padding for desired size */
+    font-size: 18px; /* Adjust font size for desired size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

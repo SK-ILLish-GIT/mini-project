@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile of User</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h2 class="text-center mb-4 profile-heading"> Welcome <span style="color: gray;">Here!</span></h2>
+                <div class="user-info">
+                    <div class="img-container">
+                        <img src="" alt="" id="profileImage" />
+                    </div>
+                    <div class="name-container">
+                        <h2 class="heading">Name</h2>
+                        <h2 id="name"></h2>
+                    </div>
+                    <div class="mail-container">
+                        <h2 class="heading">Email</h2>
+                        <h2 id="mail"></h2>
+                    </div>
+                </div>
+                <div class="logout-container">
+                    <button class="logout-btn" onclick="logOut()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Include Bootstrap JS (jQuery and Popper.js are included with Bootstrap) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+<script src="profileOAuth.js"></script>
+
+</html>
