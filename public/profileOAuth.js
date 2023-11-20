@@ -8,7 +8,7 @@ if (Object.keys(params).length !== 0) {
   localStorage.setItem("authInfo", JSON.stringify(params));
   localStorage.setItem("userName", params["name"]);
   localStorage.setItem("userEmail", params["email"]);
-  localStorage.setItem("profilePic",params["prfileImage"])
+  localStorage.setItem("profilePic", params["prfileImage"]);
 }
 //hide access token
 window.history.pushState({}, document.title, "/" + "profile.html");
@@ -36,7 +36,7 @@ fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
     // Store name and email in local storage
     localStorage.setItem("userName", userInfo.name);
     localStorage.setItem("userEmail", userInfo.email);
-    localStorage.setItem("profilePic",userInfo.picture);
+    localStorage.setItem("profilePic", userInfo.picture);
   })
   .catch((error) => {
     console.error("Error:", error);
@@ -57,7 +57,17 @@ function logOut() {
       localStorage.clear();
       localStorage.setItem("authInfo", null);
       // redirect to index.html
-      window.location.href = "https://mini-project-0vul.onrender.com/";
+      // Check if the current environment is localhost
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        // Redirect to localhost
+        window.location.href = "http://localhost:3000/";
+      } else {
+        // Redirect to the hosted URL
+        window.location.href = "https://mini-project-0vul.onrender.com/";
+      }
     })
     .catch((error) => {
       console.error("Error:", error);

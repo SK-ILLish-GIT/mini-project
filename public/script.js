@@ -37,13 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function signIn(){
     let oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-
+    // Dynamically determine the base URL
+    let baseURL = window.location.origin;
     let form = document.createElement('form');
     form.setAttribute('method', 'GET');
     form.setAttribute('action', oauth2Endpoint);
     let params = {
         'client_id': '895922906167-i2pe2g5s8m57oi8gjgolahpuqc63aus7.apps.googleusercontent.com',
-        'redirect_uri': 'https://mini-project-0vul.onrender.com/profile.html',
+        'redirect_uri': baseURL + '/profile.html',
         'response_type': 'token',
         'scope': 'openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
         'include_granted_scopes': 'true',
