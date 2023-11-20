@@ -66,14 +66,14 @@ app.post("/predict", upload.single('input_image'), async (req, res) => {
 
         // Make a POST request to the Flask API using http.request
         const options = {
-            hostname: 'pysem5projectapi.onrender.com',
-            port: 443,  // Assuming you are using the default HTTPS port
+            hostname: '172.20.70.243',
+            port: 5001,  // Assuming you are using the default HTTPS port
             path: '/',
             method: 'POST',
             headers: formData.getHeaders(),
         };
 
-        const apiReq = https.request(options, (apiRes) => {
+        const apiReq = http.request(options, (apiRes) => {
             let data = '';
 
             apiRes.on('data', (chunk) => {
