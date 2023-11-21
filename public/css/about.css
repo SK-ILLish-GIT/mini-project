@@ -15,14 +15,14 @@ html {
 
 .column-prof {
     float: left;
-    width: 15%;
+    width: 15rem;
     margin-bottom: 16px;
     padding: 0 8px;
 }
 
 .column-stud {
     float: left;
-    width: 15%;
+    width: 15rem;
     margin-bottom: 16px;
     padding: 0 8px;
 }
@@ -30,6 +30,7 @@ html {
 .row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .about-section {

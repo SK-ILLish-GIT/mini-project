@@ -140,8 +140,12 @@ body {
         padding-left: 15px;
         padding-right: 15px;
     }
-    .img-preview-container {
-        max-width: 90%;
+    .img-container{
+        flex-direction: column;
+    }
+    .img-preview-container{
+        margin-left: 0%;
+        margin-right: 0%;
     }
 }
 
